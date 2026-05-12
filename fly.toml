@@ -1,16 +1,15 @@
-# fly.toml app configuration file generated for heka on 2026-01-30T13:10:10+06:30
+# fly.toml app configuration file generated for heka-inventory-system on 2026-05-12T05:27:45Z
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'heka-inventory'
+app = 'heka-inventory-system'
 primary_region = 'sin'
 
 [build]
 
 [deploy]
-  # db:seed already runs db:push first; needs DATABASE_URL (+ optional DATABASE_URL_MIGRATE for Neon direct)
-  release_command = "pnpm run db:seed"
+  release_command = 'pnpm run db:seed'
 
 [http_service]
   internal_port = 5173
