@@ -1,4 +1,6 @@
-onlyBuiltDependencies:
-  - esbuild
-  - argon2
-  - core-js
+# pnpm 11+: dependency install scripts must be explicitly allowed (strictDepBuilds).
+# Replaces removed onlyBuiltDependencies — see https://pnpm.io/settings#allowbuilds
+allowBuilds:
+  argon2: true
+  core-js: true
+  esbuild: true
