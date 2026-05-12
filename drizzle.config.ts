@@ -1,7 +1,9 @@
 import { defineConfig } from 'drizzle-kit';
 
-if (!process.env.DATABASE_URL)
-	throw new Error('DATABASE_URL is not set');
+/** Neon: pooled URLs often break drizzle-kit push; use direct URL here (see .env.example). */
+const drizzleKitUrl =
+	process.env.DATABASE_URL_MIGRATE ?? process.env.DATABASE_URL;
+if (!drizzleKitUrl) throw new Error('DATABASE_URL (or DATABASE_URL_MIGRATE) is not set');
 
 export default defineConfig({
 	schema: [
@@ -12,7 +14,7 @@ export default defineConfig({
 		'./src/lib/server/db/table/notification-table/notification-table.ts'
 	],
 	dialect: 'postgresql',
-	dbCredentials: { url: process.env.DATABASE_URL },
+	dbCredentials: { url: drizzleKitUrl },
 	verbose: true,
 	strict: true
 });

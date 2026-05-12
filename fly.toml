@@ -9,7 +9,8 @@ primary_region = 'sin'
 [build]
 
 [deploy]
-  release_command = "pnpm db:push && pnpm db:seed"
+  # db:seed already runs db:push first; needs DATABASE_URL (+ optional DATABASE_URL_MIGRATE for Neon direct)
+  release_command = "pnpm run db:seed"
 
 [http_service]
   internal_port = 5173
